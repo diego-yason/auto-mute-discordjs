@@ -1,0 +1,36 @@
+[
+    {
+        "name": "mute",
+        "description": "Mutes all alive players (also unmutes dead players)"
+    },
+    {
+        "name": "unmute",
+        "description": "Unmutes all alive players (mutes all dead players)"
+    },
+    {
+        "name": "dead",
+        "description": "Declare a person dead",
+        "options": [
+            {
+                "name": "person",
+                "type": 6,
+                "required": true
+            }
+        ]
+    },
+    {
+        "name": "undead",
+        "description": "Undo a person's dead (just in case)",
+        "options": [
+            {
+                "name": "person",
+                "type": 6,
+                "required": true
+            }
+        ]
+    },
+    {
+        "name": "restart",
+        "description": "Clear the list of dead players"
+    }
+]

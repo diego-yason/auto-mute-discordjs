@@ -12,6 +12,8 @@
     "eslint": "^7.22.0"
   },
   "dependencies": {
+    "axios": "^0.21.1",
+    "collections": "^5.1.12",
     "discord.js": "^12.5.1"
   }
 }
