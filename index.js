@@ -12,22 +12,7 @@ const guild = {
 };
 
 const alive = new Dict();
-const dead = new Dict(); 
-
-require("./post.json").forEach((value, index, array) => {
-    axios.post(`${apiLink}/applications/${applicationid}/guilds/${guild.whatisthis}/commands`, { value }, {
-        headers: {
-            authorization: `Bot ${TOKEN}`
-        }
-    })
-         .catch(reason => {
-         // TODO make a rate limit responder
-             console.error(reason);
-         })
-         .then(() => {
-             console.log(`POST of ${value.name} is sucessful`);
-         });
-});
+const dead = new Dict();
 
 client.once("ready", () => {
     console.log("Ready!");
@@ -44,9 +29,6 @@ client.on("raw", async e => {
                 data: {
                     content: message,
                 },
-            })
-            .catch(reason => {
-                // TODO: make error handler
             });
         };
 
@@ -60,13 +42,16 @@ client.on("raw", async e => {
             case "undead":
                 break;
             case "restart":
+            case "start":
+                break;
+            case "addUser":
+                break;
+            case "removeUser":
+                break;
+            case "clearUsers":
                 break;
         }
     }
-});
-
-client.on("voiceStateUpdate", (oldState, newState) => {
-    // should i still?
 });
 
 client.login(TOKEN);
