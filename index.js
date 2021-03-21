@@ -1,7 +1,5 @@
-const Discord = require("discord.js");
 const axios = require("axios").default;
 const Dict = require("collections/dict");
-const client = new Discord.Client();
 
 const TOKEN = "ODIyNzM3MDg3MzI5NTk5NTA5.YFWnnw.62lntOIegAk9cbxVs_32ycxz2m4";
 const apiLink = "https://discord.com/api/v8";
@@ -14,11 +12,10 @@ const guild = {
 const alive = new Dict();
 const dead = new Dict();
 
-client.once("ready", () => {
-    console.log("Ready!");
-});
 
-client.on("raw", async e => {
+
+// REMINDME this will be holding the code i have right now until i set up the endpoints
+const holderCommand = e => {
     if (e.t === "INTERACTION_CREATE") {
         console.log("Received an interaction!");
         const data = e.d;
@@ -53,5 +50,3 @@ client.on("raw", async e => {
         }
     }
 });
-
-client.login(TOKEN);
