@@ -14,7 +14,6 @@
   "dependencies": {
     "axios": "^0.21.1",
     "collections": "^5.1.12",
-    "discord-interactions": "^2.0.2",
-    "express": "^4.17.1"
+    "discord.js": "^12.5.1"
   }
 }
