@@ -66,5 +66,13 @@
     {
         "name": "start",
         "description": "Starts a new game (functionally the same as restart)"
+    },
+    {
+        "name": "end",
+        "description": "End a game"
+    },
+    {
+        "name": "clear",
+        "description": "Remove all users from the amongus role. This is limited to those who were added while the bot is active"
     }
 ]
