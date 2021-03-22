@@ -58,5 +58,13 @@
     {
         "name": "end-meeting",
         "description": "A meeting ends!"
+    },
+    {
+        "name": "restart",
+        "description": "Starts a new game (functionally the same as start)"
+    },
+    {
+        "name": "start",
+        "description": "Starts a new game (functionally the same as restart)"
     }
 ]
