@@ -2,7 +2,7 @@
   "name": "auto-mute-discordjs",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,6 +14,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "collections": "^5.1.12",
-    "discord.js": "^12.5.1"
+    "discord.js": "^12.5.1",
+    "websocket": "^1.0.33"
   }
 }
