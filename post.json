@@ -1,0 +1,62 @@
+[
+    {
+        "name": "ping",
+        "description": "pong!"
+    },
+    {
+        "name": "add",
+        "description": "Adds a player to the game (gives them access to talk in the voice chat)",
+        "options": [
+            {
+                "name": "user",
+                "description": "User to be added",
+                "type": 6,
+                "required": true
+            }
+        ]
+    },
+    {
+        "name": "remove",
+        "description": "Removes a user from the game",
+        "options": [
+            {
+                "name": "user",
+                "description": "User to be removed",
+                "type": 6,
+                "required": true
+            }
+        ]
+    },
+    {
+        "name": "dead",
+        "description": "User died",
+        "options": [
+            {
+                "name": "user",
+                "description": "User who died",
+                "type": 6,
+                "required": true
+            }
+        ]
+    },
+    {
+        "name": "undead",
+        "description": "User actually didn't die",
+        "options": [
+            {
+                "name": "user",
+                "description": "User who didn't die",
+                "type": 6,
+                "required": true
+            }
+        ]
+    },
+    {
+        "name": "start-meeting",
+        "description": "A meeting starts!"
+    },
+    {
+        "name": "end-meeting",
+        "description": "A meeting ends!"
+    }
+]
