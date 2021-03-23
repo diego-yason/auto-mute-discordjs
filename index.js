@@ -27,11 +27,11 @@ client.on(`raw`, async e => {
 
         const reply = message => {
             axios.post(`/interactions/${interaction.id}/${interaction.token}/callback`, {
-                type: 3,
+                type: 4,
                 data: {
                     // TODO: convert this into embed (see https://discord.com/developers/docs/resources/channel#embed-object)
                     // maybe make another function?
-                    content: message
+                    content: message,
                 }
             })
                  .finally("Send the message");
