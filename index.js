@@ -36,9 +36,12 @@ const ref = {
             skeld: "https://media.discordapp.net/attachments/823841770378100756/823841846946037780/The_Skeld.png",
             mira: "https://media.discordapp.net/attachments/823841770378100756/823841963370348574/MIRA_HQ.png"
         },
-        tan: "https://media.discordapp.net/attachments/823841770378100756/823841960774205460/Tan.png"
-    }
+        tan: "https://media.discordapp.net/attachments/823841770378100756/823841960774205460/Tan.png",
+    },
+    gameInfo: {}
 };
+
+// TODO make embed
 
 // REMINDME for speed and vision, you have to divide by 100 to get it correct
 // REMINDME for kill cooldown, divide by 10
@@ -95,7 +98,8 @@ client.on(`raw`, async e => {
                 
                 dead.add({
                 username: await getUsername(options[0].value),
-                id: options[0].value 
+                id: options[0].value,
+                color: options[1].value // TODO check to make color unique per person
                 }, options[0].value);
                 
                 axios.put(`/guilds/${guild}/members/${options[0].value}/roles/${role}`)
@@ -259,7 +263,9 @@ client.on(`raw`, async e => {
                     player_speed: 100,
                     crewmate_vision: 100,
                     imposter_vision: 150,
-                    kill_cooldown: 450
+                    kill_cooldown: 450,
+                    kill_distance: "medium",
+                    task_bar_update: "always",
                 };
 
                 for (let i = 0; i < options.length; i++) {
@@ -269,6 +275,10 @@ client.on(`raw`, async e => {
                             break;
                     }
                 }
+
+                ref.gameInfo = settings;
+
+                reply("Saved settings!");
             }
         }
     }

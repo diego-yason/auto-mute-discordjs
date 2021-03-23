@@ -856,7 +856,7 @@
                 ]
             },
             {
-                "name": "kill-distance",
+                "name": "kill_distance",
                 "description": "How far can imposters kill? Default: Medium",
                 "type": 3,
                 "required": false,
@@ -876,7 +876,7 @@
                 ]
             },
             {
-                "name": "task-bar-update",
+                "name": "task_bar_update",
                 "description": "Will the task bar update? If so, when? Default: Always",
                 "type": 3,
                 "required": false,
