@@ -18,7 +18,7 @@ client.once(`ready`, () => {
     console.log(`Ready!`);
 });
 
-client.on(`raw`, e => {
+client.on(`raw`, async e => {
     if (e.t === `INTERACTION_CREATE`) {
         const interaction = e.d;
 
@@ -33,7 +33,8 @@ client.on(`raw`, e => {
                     // maybe make another function?
                     content: message
                 }
-            });
+            })
+                 .finally("Send the message");
         };
 
         console.log("Got an interaction");
@@ -44,24 +45,33 @@ client.on(`raw`, e => {
                 break;
             }
             case `add`: {
-                // this command has been changed for dict
-                axios.get(`/users/${options[0].value}`)
-                     .then(res => {
-                         dead.add({
-                             username: res.data.username,
-                             id: options[0].value 
-                         }, options[0].value);
-                     })
-                     .catch((res) => {
-                         console.error("Error");
-                     });
-                axios.put(`/guilds/${guild}/members/${options[0].value}/roles/${role}`);
+                // eslint-disable-next-line no-inner-declarations
+                function getUsername(id) {
+                    return new Promise((resolve, reject) => {
+                        axios.get(`/users/${id}`)
+                             .then(res => {
+                                 resolve(res.data.username);
+                             })
+                             .catch((res) => {
+                                 console.error("Error");
+                                 reject(res.status);
+                             });
+                    });
+                }
+                
+                dead.add({
+                username: await getUsername(options[0].value),
+                id: options[0].value 
+                }, options[0].value);
+                
+                axios.put(`/guilds/${guild}/members/${options[0].value}/roles/${role}`)
+                     .finally(() => { console.log("Placed the role"); });
+                
                 console.log(`Added ${dead.get(options[0].value).username} to dead`);
                 reply(`Added ${dead.get(options[0].value).username} to the game!`);
                 break;
             }
             case `remove`: {
-                // this command has been changed to accept dict
                 const user = options[0].value;
                 if (dead.has(user)) {
                     reply(`Removed ${dead.get(user).username} from the game!`);
@@ -77,7 +87,6 @@ client.on(`raw`, e => {
                 break;
             }
             case `dead`: {
-                // command now accepts dict
                 const user = options[0].value;
                 if (alive.has(user)) {
                     dead.add(alive.get(user), user);
@@ -102,7 +111,6 @@ client.on(`raw`, e => {
                 break;
             }
             case `start-meeting`: {
-                // now dict compliant
                 dead.forEach((value, index, array) => {
                     axios.patch(`/guilds/${guild}/members/${value.id}`, {
                         mute: true,
@@ -121,7 +129,6 @@ client.on(`raw`, e => {
                 break;
             }
             case `end-meeting`: {
-                // dict compliant
                 alive.forEach((value, index, array) => {
                     axios.patch(`/guilds/${guild}/members/${value.id}`, {
                         mute: true,
@@ -143,11 +150,16 @@ client.on(`raw`, e => {
             case `start`: {
                 // ok with dict
                 dead.forEach((value, index, array) => {
-                    axios.patch(`/guilds/${guild}/members/${value.username}`, {
+                    axios.patch(`/guilds/${guild}/members/${value.id}`, {
                         mute: true,
                         deaf: true
-                    });
-                    console.log(`Muted + deafened ${value.username}`);
+                    })
+                         .catch(res => {
+                             console.error(res.status);
+                         })
+                         .then(res => {
+                             console.log(`Muted and deafened ${value.username}`);
+                         });
                     
                     alive.add(value, value.id);
                     console.log(`Moved ${value.username} from dead to alive`);
@@ -157,13 +169,14 @@ client.on(`raw`, e => {
                 break;
             }
             case `end`: {
-                // dict good
                 alive.forEach((value, index, array) => {
                     axios.patch(`/guilds/${guild}/members/${value.id}`, {
                         mute: false,
                         deaf: false
                     });
                     console.log(`Unmuted and undeafened ${value.username}`);
+                    dead.add({ username: value.username, id: value.id}, value.id);
+                    alive.delete(value.id);
                 });
                 dead.forEach((value, index, array) => {
                     axios.patch(`/guilds/${guild}/members/${value.id}`, {
