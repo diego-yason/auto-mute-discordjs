@@ -12,6 +12,62 @@
                 "description": "User to be added",
                 "type": 6,
                 "required": true
+            },
+            {
+                "name": "color",
+                "description": "Color of player",
+                "type": 3,
+                "required": true,
+                "choices": [
+                    {
+                        "name": "red",
+                        "value": "red"
+                    },
+                    {
+                        "name": "blue",
+                        "value": "blue"
+                    },
+                    {
+                        "name": "green",
+                        "value": "green"
+                    },
+                    {
+                        "name": "pink",
+                        "value": "pink"
+                    },
+                    {
+                        "name": "orange",
+                        "value": "orange"
+                    },
+                    {
+                        "name": "yellow",
+                        "value": "yellow"
+                    },
+                    {
+                        "name": "black",
+                        "value": "black"
+                    },
+                    {
+                        "name": "white",
+                        "value": "white"
+                    },
+                    {
+                        "name": "purple",
+                        "value": "purple"
+                    },
+                    {
+                        "name": "brown",
+                        "value": "brown"
+                    },
+                    {
+                        "name": "cyan",
+                        "value": "cyan"
+                    },
+                    {
+                        "name": "lime",
+                        "value": "lime"
+                    }
+                ]
             }
         ]
     },
@@ -69,10 +125,66 @@
     },
     {
         "name": "end",
-        "description": "End a game"
+        "description": "End a game",
+        "options": [
+            {
+                "type": 5,
+                "name": "embed",
+                "description": "Post an embed in #among-us?",
+                "required": true
+            }
+        ]
     },
     {
         "name": "clear",
         "description": "Remove all users from the amongus role. This is limited to those who were added while the bot is active"
+    },
+    {
+        "name": "crewmate",
+        "description": "Mark a person as a crewmate",
+        "options": [
+            {
+                "name": "user",
+                "description": "User to be marked as crewmate",
+                "type": 6,
+                "required": true
+            }
+        ]
+    },
+    {
+        "name": "imposter",
+        "description": "Mark a person as an imposter",
+        "options": [
+            {
+                "name": "user",
+                "description": "User to be marked as imposter",
+                "type": 6,
+                "required": true
+            }
+        ]
+    },
+    {
+        "name": "admin-create-role",
+        "description": "ADMIN-RESTRICTED: Create a role",
+        "options": [
+            {
+                "name": "role-name",
+                "description": "Visible role name",
+                "type": 3,
+                "required": true
+            },
+            {
+                "name": "hoist",
+                "description": "Hoist role?",
+                "type": 5,
+                "required": true
+            },
+            {
+                "name": "hex-code",
+                "description": "Color of code in hex code",
+                "type": 3,
+                "required": true
+            }
+        ]
     }
 ]

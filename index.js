@@ -14,6 +14,32 @@ const Discord = require(`discord.js`),
       guild = `797075885827424266`,
       role = `814138012920709161`;
 
+const ref = {
+    emojis: {
+        red: ":Red:",
+        blue: ":Blue:",
+        green: ":Green:",
+        pink: ":Pink:",
+        orange: ":Orange:",
+        yellow: ":Yellow:",
+        black: ":Black:",
+        white: ":White:",
+        purple: ":Purple:",
+        brown: ":Brown:",
+        cyan: ":Cyan:",
+        lime: ":Lime:"
+    },
+    images: {
+        map: {
+            polus: "https://media.discordapp.net/attachments/823841770378100756/823841840159522836/Polus.png",
+            airship: "https://media.discordapp.net/attachments/823841770378100756/823841845141962782/The_Airship.png",
+            skeld: "https://media.discordapp.net/attachments/823841770378100756/823841846946037780/The_Skeld.png",
+            mira: "https://media.discordapp.net/attachments/823841770378100756/823841963370348574/MIRA_HQ.png"
+        },
+        tan: "https://media.discordapp.net/attachments/823841770378100756/823841960774205460/Tan.png"
+    }
+};
+
 client.once(`ready`, () => {
     console.log(`Ready!`);
 });
@@ -35,6 +61,12 @@ client.on(`raw`, async e => {
                 }
             })
                  .finally("Send the message");
+        };
+
+        const embed = data => {
+            axios.post(`/channels/814710147775594506/messages`, {
+                embed: data 
+            });
         };
 
         console.log("Got an interaction");
@@ -200,6 +232,13 @@ client.on(`raw`, async e => {
                 alive.clear();
                 dead.clear();
                 reply(`Cleared the game list, check for any missed people!`);
+                break;
+            }
+            case "admin-create-role": {
+                const hexToNum = hex => {
+                    return parseInt(hex.replace("#", ""), 16);
+                };
+                break;
             }
         }
     }
