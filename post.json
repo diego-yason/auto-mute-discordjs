@@ -198,11 +198,11 @@
                 "required": true,
                 "choices": [
                     {
-                        "name": "The Skeld",
+                        "name": "The_Skeld",
                         "value": "skeld"
                     },
                     {
-                        "name": "Mira HQ",
+                        "name": "Mira_HQ",
                         "value": "mira"
                     },
                     {
@@ -210,7 +210,7 @@
                         "value": "polus"
                     },
                     {
-                        "name": "The Airship",
+                        "name": "The_Airship",
                         "value": "airship"
                     }
                 ]
@@ -222,15 +222,15 @@
                 "required": true,
                 "choices": [
                     {
-                        "name": "1 Imposter",
+                        "name": "1-Imposter",
                         "value": 1
                     },
                     {
-                        "name": "2 Imposters",
+                        "name": "2-Imposters",
                         "value": 2
                     },
                     {
-                        "name": "3 Imposters",
+                        "name": "3-Imposters",
                         "value": 3
                     }
                 ]
@@ -248,15 +248,15 @@
                 "required": true,
                 "choices": [
                     {
-                        "name": "No Common Tasks",
+                        "name": "No-Common-Tasks",
                         "value": 0
                     },
                     {
-                        "name": "1 Common Task",
+                        "name": "1-Common-Task",
                         "value": 1
                     },
                     {
-                        "name": "2 Common Tasks",
+                        "name": "2-Common-Tasks",
                         "value": 2
                     }
                 ]
@@ -268,19 +268,19 @@
                 "required": true,
                 "choices": [
                     {
-                        "name": "No Long Tasks",
+                        "name": "No-Long-Tasks",
                         "value": 0
                     },
                     {
-                        "name": "1 Long Task",
+                        "name": "1-Long-Task",
                         "value": 1
                     },
                     {
-                        "name": "2 Long Tasks",
+                        "name": "2-Long-Tasks",
                         "value": 2
                     },
                     {
-                        "name": "3 Long Tasks",
+                        "name": "3-Long-Tasks",
                         "value": 3
                     }
                 ]
@@ -292,27 +292,27 @@
                 "required": true,
                 "choices": [
                     {
-                        "name": "No Short Tasks",
+                        "name": "No-Short-Tasks",
                         "value": 0
                     },
                     {
-                        "name": "1 Short Task",
+                        "name": "1-Short-Task",
                         "value": 1
                     },
                     {
-                        "name": "2 Short Tasks",
+                        "name": "2-Short-Tasks",
                         "value": 2
                     },
                     {
-                        "name": "3 Short Tasks",
+                        "name": "3-Short-Tasks",
                         "value": 3
                     },
                     {
-                        "name": "4 Short Tasks",
+                        "name": "4-Short-Tasks",
                         "value": 4
                     },
                     {
-                        "name": "5 Short Tasks",
+                        "name": "5-Short-Tasks",
                         "value": 5
                     }
                 ]
@@ -342,55 +342,55 @@
                 "required": false,
                 "choices": [
                     {
-                        "name": "No Cooldown",
+                        "name": "No-Cooldown",
                         "value": 0
                     },
                     {
-                        "name": "5 seconds",
+                        "name": "5-seconds",
                         "value": 5
                     },
                     {
-                        "name": "10 seconds",
+                        "name": "10-seconds",
                         "value": 10
                     },
                     {
-                        "name": "15 seconds",
+                        "name": "15-seconds",
                         "value": 15
                     },
                     {
-                        "name": "20 seconds",
+                        "name": "20-seconds",
                         "value": 20
                     },
                     {
-                        "name": "25 seconds",
+                        "name": "25-seconds",
                         "value": 25
                     },
                     {
-                        "name": "30 seconds",
+                        "name": "30-seconds",
                         "value": 30
                     },
                     {
-                        "name": "35 seconds",
+                        "name": "35-seconds",
                         "value": 35
                     },
                     {
-                        "name": "40 seconds",
+                        "name": "40-seconds",
                         "value": 40
                     },
                     {
-                        "name": "45 seconds",
+                        "name": "45-seconds",
                         "value": 45
                     },
                     {
-                        "name": "50 seconds",
+                        "name": "50-seconds",
                         "value": 50
                     },
                     {
-                        "name": "55 seconds",
+                        "name": "55-seconds",
                         "value": 55
                     },
                     {
-                        "name": "60 seconds",
+                        "name": "60-seconds",
                         "value": 60
                     }
                 ]
@@ -402,39 +402,39 @@
                 "required": false,
                 "choices": [
                     {
-                        "name": "No Discussion (???)",
+                        "name": "No-Discussion",
                         "value": 0
                     },
                     {
-                        "name": "15 seconds",
+                        "name": "15-seconds",
                         "value": 15
                     },
                     {
-                        "name": "30 seconds",
+                        "name": "30-seconds",
                         "value": 30
                     },
                     {
-                        "name": "45 seconds",
+                        "name": "45-seconds",
                         "value": 45
                     },
                     {
-                        "name": "60 seconds",
+                        "name": "60-seconds",
                         "value": 60
                     },
                     {
-                        "name": "75 seconds",
+                        "name": "75-seconds",
                         "value": 75
                     },
                     {
-                        "name": "90 seconds",
+                        "name": "90-seconds",
                         "value": 90
                     },
                     {
-                        "name": "105 seconds",
+                        "name": "105-seconds",
                         "value": 105
                     },
                     {
-                        "name": "120 seconds",
+                        "name": "120-seconds",
                         "value": 120
                     }
                 ]
@@ -446,87 +446,87 @@
                 "required": false,
                 "choices": [
                     {
-                        "name": "No Vote Time (???)",
+                        "name": "Unlimited-Vote-Time",
                         "value": 0
                     },
                     {
-                        "name": "15 seconds",
+                        "name": "15-seconds",
                         "value": 15
                     },
                     {
-                        "name": "30 seconds",
+                        "name": "30-seconds",
                         "value": 30
                     },
                     {
-                        "name": "45 seconds",
+                        "name": "45-seconds",
                         "value": 45
                     },
                     {
-                        "name": "60 seconds",
+                        "name": "60-seconds",
                         "value": 60
                     },
                     {
-                        "name": "75 seconds",
+                        "name": "75-seconds",
                         "value": 75
                     },
                     {
-                        "name": "90 seconds",
+                        "name": "90-seconds",
                         "value": 90
                     },
                     {
-                        "name": "105 seconds",
+                        "name": "105-seconds",
                         "value": 105
                     },
                     {
-                        "name": "120 seconds",
+                        "name": "120-seconds",
                         "value": 120
                     },
                     {
-                        "name": "135 seconds",
+                        "name": "135-seconds",
                         "value": 135
                     },
                     {
-                        "name": "150 seconds",
+                        "name": "150-seconds",
                         "value": 150
                     },
                     {
-                        "name": "165 seconds",
+                        "name": "165-seconds",
                         "value": 165
                     },
                     {
-                        "name": "180 seconds",
+                        "name": "180-seconds",
                         "value": 180
                     },
                     {
-                        "name": "195 seconds",
+                        "name": "195-seconds",
                         "value": 195
                     },
                     {
-                        "name": "210 seconds",
+                        "name": "210-seconds",
                         "value": 210
                     },
                     {
-                        "name": "225 seconds",
+                        "name": "225-seconds",
                         "value": 225
                     },
                     {
-                        "name": "240 seconds",
+                        "name": "240-seconds",
                         "value": 240
                     },
                     {
-                        "name": "255 seconds",
+                        "name": "255-seconds",
                         "value": 255
                     },
                     {
-                        "name": "270 seconds",
+                        "name": "270-seconds",
                         "value": 270
                     },
                     {
-                        "name": "285 seconds",
+                        "name": "285-seconds",
                         "value": 285
                     },
                     {
-                        "name": "300 seconds",
+                        "name": "300-seconds",
                         "value": 300
                     }
                 ]
@@ -538,51 +538,51 @@
                 "required": false,
                 "choices": [
                     {
-                        "name": "0.25x speed",
+                        "name": "0.25x-speed",
                         "value": 25
                     },
                     {
-                        "name": "0.50x speed",
+                        "name": "0.50x-speed",
                         "value": 50
                     },
                     {
-                        "name": "0.75x speed",
+                        "name": "0.75x-speed",
                         "value": 75
                     },
                     {
-                        "name": "1.00x speed",
+                        "name": "1.00x-speed",
                         "value": 100
                     },
                     {
-                        "name": "1.25x speed",
+                        "name": "1.25x-speed",
                         "value": 125
                     },
                     {
-                        "name": "1.50x speed",
+                        "name": "1.50x-speed",
                         "value": 150
                     },
                     {
-                        "name": "1.75x speed",
+                        "name": "1.75x-speed",
                         "value": 175
                     },
                     {
-                        "name": "2.00x speed",
+                        "name": "2.00x-speed",
                         "value": 200
                     },
                     {
-                        "name": "2.25x speed",
+                        "name": "2.25x-speed",
                         "value": 225
                     },
                     {
-                        "name": "2.50x speed",
+                        "name": "2.50x-speed",
                         "value": 250
                     },
                     {
-                        "name": "2.75x speed",
+                        "name": "2.75x-speed",
                         "value": 275
                     },
                     {
-                        "name": "3.00x speed",
+                        "name": "3.00x-speed",
                         "value": 300
                     }
                 ]
@@ -594,83 +594,83 @@
                 "required": false,
                 "choices": [
                     {
-                        "name": "0.25x vision",
+                        "name": "0.25x-vision",
                         "value": 25
                     },
                     {
-                        "name": "0.50x vision",
+                        "name": "0.50x-vision",
                         "value": 50
                     },
                     {
-                        "name": "0.75x vision",
+                        "name": "0.75x-vision",
                         "value": 75
                     },
                     {
-                        "name": "1.00x vision",
+                        "name": "1.00x-vision",
                         "value": 100
                     },
                     {
-                        "name": "1.25x vision",
+                        "name": "1.25x-vision",
                         "value": 125
                     },
                     {
-                        "name": "1.50x vision",
+                        "name": "1.50x-vision",
                         "value": 150
                     },
                     {
-                        "name": "1.75x vision",
+                        "name": "1.75x-vision",
                         "value": 175
                     },
                     {
-                        "name": "2.00x vision",
+                        "name": "2.00x-vision",
                         "value": 200
                     },
                     {
-                        "name": "2.25x vision",
+                        "name": "2.25x-vision",
                         "value": 225
                     },
                     {
-                        "name": "2.50x vision",
+                        "name": "2.50x-vision",
                         "value": 250
                     },
                     {
-                        "name": "2.75x vision",
+                        "name": "2.75x-vision",
                         "value": 275
                     },
                     {
-                        "name": "3.00x vision",
+                        "name": "3.00x-vision",
                         "value": 300
                     },
                     {
-                        "name": "3.25x vision",
+                        "name": "3.25x-vision",
                         "value": 325
                     },
                     {
-                        "name": "3.50x vision",
+                        "name": "3.50x-vision",
                         "value": 350
                     },
                     {
-                        "name": "3.75x vision",
+                        "name": "3.75x-vision",
                         "value": 375
                     },
                     {
-                        "name": "4.00x vision",
+                        "name": "4.00x-vision",
                         "value": 400
                     },
                     {
-                        "name": "4.25x vision",
+                        "name": "4.25x-vision",
                         "value": 425
                     },
                     {
-                        "name": "4.50x vision",
+                        "name": "4.50x-vision",
                         "value": 450
                     },
                     {
-                        "name": "4.75x vision",
+                        "name": "4.75x-vision",
                         "value": 475
                     },
                     {
-                        "name": "5.00x vision",
+                        "name": "5.00x-vision",
                         "value": 500
                     }
                 ]
@@ -682,83 +682,83 @@
                 "required": false,
                 "choices": [
                     {
-                        "name": "0.25x vision",
+                        "name": "0.25x-vision",
                         "value": 25
                     },
                     {
-                        "name": "0.50x vision",
+                        "name": "0.50x-vision",
                         "value": 50
                     },
                     {
-                        "name": "0.75x vision",
+                        "name": "0.75x-vision",
                         "value": 75
                     },
                     {
-                        "name": "1.00x vision",
+                        "name": "1.00x-vision",
                         "value": 100
                     },
                     {
-                        "name": "1.25x vision",
+                        "name": "1.25x-vision",
                         "value": 125
                     },
                     {
-                        "name": "1.50x vision",
+                        "name": "1.50x-vision",
                         "value": 150
                     },
                     {
-                        "name": "1.75x vision",
+                        "name": "1.75x-vision",
                         "value": 175
                     },
                     {
-                        "name": "2.00x vision",
+                        "name": "2.00x-vision",
                         "value": 200
                     },
                     {
-                        "name": "2.25x vision",
+                        "name": "2.25x-vision",
                         "value": 225
                     },
                     {
-                        "name": "2.50x vision",
+                        "name": "2.50x-vision",
                         "value": 250
                     },
                     {
-                        "name": "2.75x vision",
+                        "name": "2.75x-vision",
                         "value": 275
                     },
                     {
-                        "name": "3.00x vision",
+                        "name": "3.00x-vision",
                         "value": 300
                     },
                     {
-                        "name": "3.25x vision",
+                        "name": "3.25x-vision",
                         "value": 325
                     },
                     {
-                        "name": "3.50x vision",
+                        "name": "3.50x-vision",
                         "value": 350
                     },
                     {
-                        "name": "3.75x vision",
+                        "name": "3.75x-vision",
                         "value": 375
                     },
                     {
-                        "name": "4.00x vision",
+                        "name": "4.00x-vision",
                         "value": 400
                     },
                     {
-                        "name": "4.25x vision",
+                        "name": "4.25x-vision",
                         "value": 425
                     },
                     {
-                        "name": "4.50x vision",
+                        "name": "4.50x-vision",
                         "value": 450
                     },
                     {
-                        "name": "4.75x vision",
+                        "name": "4.75x-vision",
                         "value": 475
                     },
                     {
-                        "name": "5.00x vision",
+                        "name": "5.00x-vision",
                         "value": 500
                     }
                 ]
@@ -770,87 +770,87 @@
                 "required": false,
                 "choices": [
                     {
-                        "name": "10.0 seconds",
+                        "name": "10.0-seconds",
                         "value": 100
                     },
                     {
-                        "name": "12.5 seconds",
+                        "name": "12.5-seconds",
                         "value": 125
                     },
                     {
-                        "name": "15.0 seconds",
+                        "name": "15.0-seconds",
                         "value": 150
                     },
                     {
-                        "name": "17.5 seconds",
+                        "name": "17.5-seconds",
                         "value": 175
                     },
                     {
-                        "name": "20.0 seconds",
+                        "name": "20.0-seconds",
                         "value": 200
                     },
                     {
-                        "name": "22.5 seconds",
+                        "name": "22.5-seconds",
                         "value": 225
                     },
                     {
-                        "name": "25.0 seconds",
+                        "name": "25.0-seconds",
                         "value": 250
                     },
                     {
-                        "name": "27.5 seconds",
+                        "name": "27.5-seconds",
                         "value": 275
                     },
                     {
-                        "name": "30.0 seconds",
+                        "name": "30.0-seconds",
                         "value": 300
                     },
                     {
-                        "name": "32.5 seconds",
+                        "name": "32.5-seconds",
                         "value": 325
                     },
                     {
-                        "name": "35.0 seconds",
+                        "name": "35.0-seconds",
                         "value": 350
                     },
                     {
-                        "name": "37.5 seconds",
+                        "name": "37.5-seconds",
                         "value": 375
                     },
                     {
-                        "name": "40.0 seconds",
+                        "name": "40.0-seconds",
                         "value": 400
                     },
                     {
-                        "name": "42.5 seconds",
+                        "name": "42.5-seconds",
                         "value": 425
                     },
                     {
-                        "name": "45.0 seconds",
+                        "name": "45.0-seconds",
                         "value": 450
                     },
                     {
-                        "name": "47.5 seconds",
+                        "name": "47.5-seconds",
                         "value": 475
                     },
                     {
-                        "name": "50.0 seconds",
+                        "name": "50.0-seconds",
                         "value": 500
                     },
                     {
-                        "name": "52.5 seconds",
+                        "name": "52.5-seconds",
                         "value": 525
                     },
                     {
-                        "name": "55.0 seconds",
+                        "name": "55.0-seconds",
                         "value": 550
                     },
                     {
-                        "name": "57.5 seconds",
+                        "name": "57.5-seconds",
                         "value": 575
                     },
                     {
-                        "name": "60.0 seconds",
+                        "name": "60.0-seconds",
                         "value": 600
                     }
                 ]
