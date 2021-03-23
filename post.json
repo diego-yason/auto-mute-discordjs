@@ -216,7 +216,7 @@
                 ]
             },
             {
-                "name": "imposter-count",
+                "name": "imposters",
                 "description": "How many (not so) deceptive imposters are we having?",
                 "type": 4,
                 "required": true,
@@ -236,14 +236,14 @@
                 ]
             },
             {
-                "name": "visual-tasks",
-                "description": "Can people see visually that you did a task? Default: True",
+                "name": "visual_tasks",
+                "description": "Can people see visually that you did a task?",
                 "type": 5,
                 "required": true
             },
             {
-                "name": "common-task",
-                "description": "How many common tasks will crewmates get? Default: 1",
+                "name": "common_task",
+                "description": "How many common tasks will crewmates get?",
                 "type": 4,
                 "required": true,
                 "choices": [
@@ -262,8 +262,8 @@
                 ]
             },
             {
-                "name": "long-task",
-                "description": "How many long tasks will crewmates get? Default: 1",
+                "name": "long_task",
+                "description": "How many long tasks will crewmates get?",
                 "type": 4,
                 "required": true,
                 "choices": [
@@ -286,8 +286,8 @@
                 ]
             },
             {
-                "name": "short-task",
-                "description": "How many short tasks will crewmates get? Default: 2",
+                "name": "short_task",
+                "description": "How many short tasks will crewmates get?",
                 "type": 4,
                 "required": true,
                 "choices": [
@@ -318,25 +318,25 @@
                 ]
             },
             {
-                "name": "confirm-ejects",
+                "name": "confirm_ejects",
                 "description": "Will the game confirm ejected players if they are an imposter? Default: true",
                 "type": 5,
                 "required": false
             },
             {
-                "name": "emergency-meetings",
+                "name": "emergency_meetings",
                 "description": "From 0-9, how many meetings can a person call? Default: 1",
                 "type": 4,
                 "required": false
             },
             {
-                "name": "anonymous-voting",
+                "name": "anonymous_voting",
                 "description": "Will we know who voted who? Default: false",
                 "type": 5,
                 "required": false
             },
             {
-                "name": "emergency-cooldown",
+                "name": "emergency_cooldown",
                 "description": "How many seconds after a meeting before someone can call? Default: 15s",
                 "type": 4,
                 "required": false,
@@ -396,7 +396,7 @@
                 ]
             },
             {
-                "name": "discussion-time",
+                "name": "discussion_time",
                 "description": "How much time do can you discuss? Default: 15s",
                 "type": 4,
                 "required": false,
@@ -440,7 +440,7 @@
                 ]
             },
             {
-                "name": "voting-time",
+                "name": "voting_time",
                 "description": "How much time do you have to vote? Default: 120s",
                 "type": 4,
                 "required": false,
@@ -532,7 +532,7 @@
                 ]
             },
             {
-                "name": "player-speed",
+                "name": "player_speed",
                 "description": "How fast will **all** players move? Default: 1.0x",
                 "type": 4,
                 "required": false,
@@ -588,7 +588,7 @@
                 ]
             },
             {
-                "name": "crewmate-vision",
+                "name": "crewmate_vision",
                 "description": "How far will **crewmates** see? Default: 1.0x",
                 "type": 4,
                 "required": false,
@@ -676,7 +676,7 @@
                 ]
             },
             {
-                "name": "imposter-vision",
+                "name": "imposter_vision",
                 "description": "How far will **imposters** see? Default: 1.5x",
                 "type": 4,
                 "required": false,
@@ -764,7 +764,7 @@
                 ]
             },
             {
-                "name": "kill-cooldown",
+                "name": "kill_cooldown",
                 "description": "How long do imposters have to wait to kill again? Default: 45s",
                 "type": 4,
                 "required": false,

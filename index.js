@@ -242,6 +242,34 @@ client.on(`raw`, async e => {
                 };
                 break;
             }
+            case "save-settings": {
+                const settings = {
+                    map: null,
+                    imposters: null,
+                    visual_tasks: null,
+                    common_task: null,
+                    short_task: null,
+                    long_task: null,
+                    confirm_ejects: true,
+                    emerengecy_meetings: 1,
+                    anonymous_voting: false,
+                    emerengecy_cooldown: 15,
+                    discussion_time: 15,
+                    voting_time: 120,
+                    player_speed: 100,
+                    crewmate_vision: 100,
+                    imposter_vision: 150,
+                    kill_cooldown: 450
+                };
+
+                for (let i = 0; i < options.length; i++) {
+                    switch (options[i].name) {
+                        default:
+                            settings[options[i].name] = options[i].value;
+                            break;
+                    }
+                }
+            }
         }
     }
 });
