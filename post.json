@@ -186,5 +186,715 @@
                 "required": true
             }
         ]
+    },
+    {
+        "name": "save-settings",
+        "description": "Save settings in a game. All recommended settings are default.",
+        "options": [
+            {
+                "name": "map",
+                "description": "What map are we playing on?",
+                "type": 3,
+                "required": true,
+                "choices": [
+                    {
+                        "name": "The Skeld",
+                        "value": "skeld"
+                    },
+                    {
+                        "name": "Mira HQ",
+                        "value": "mira"
+                    },
+                    {
+                        "name": "Polus",
+                        "value": "polus"
+                    },
+                    {
+                        "name": "The Airship",
+                        "value": "airship"
+                    }
+                ]
+            },
+            {
+                "name": "imposter-count",
+                "description": "How many (not so) deceptive imposters are we having?",
+                "type": 4,
+                "required": true,
+                "choices": [
+                    {
+                        "name": "1 Imposter",
+                        "value": 1
+                    },
+                    {
+                        "name": "2 Imposters",
+                        "value": 2
+                    },
+                    {
+                        "name": "3 Imposters",
+                        "value": 3
+                    }
+                ]
+            },
+            {
+                "name": "visual-tasks",
+                "description": "Can people see visually that you did a task? Default: True",
+                "type": 5,
+                "required": true
+            },
+            {
+                "name": "common-task",
+                "description": "How many common tasks will crewmates get? Default: 1",
+                "type": 4,
+                "required": true,
+                "choices": [
+                    {
+                        "name": "No Common Tasks",
+                        "value": 0
+                    },
+                    {
+                        "name": "1 Common Task",
+                        "value": 1
+                    },
+                    {
+                        "name": "2 Common Tasks",
+                        "value": 2
+                    }
+                ]
+            },
+            {
+                "name": "long-task",
+                "description": "How many long tasks will crewmates get? Default: 1",
+                "type": 4,
+                "required": true,
+                "choices": [
+                    {
+                        "name": "No Long Tasks",
+                        "value": 0
+                    },
+                    {
+                        "name": "1 Long Task",
+                        "value": 1
+                    },
+                    {
+                        "name": "2 Long Tasks",
+                        "value": 2
+                    },
+                    {
+                        "name": "3 Long Tasks",
+                        "value": 3
+                    }
+                ]
+            },
+            {
+                "name": "short-task",
+                "description": "How many short tasks will crewmates get? Default: 2",
+                "type": 4,
+                "required": true,
+                "choices": [
+                    {
+                        "name": "No Short Tasks",
+                        "value": 0
+                    },
+                    {
+                        "name": "1 Short Task",
+                        "value": 1
+                    },
+                    {
+                        "name": "2 Short Tasks",
+                        "value": 2
+                    },
+                    {
+                        "name": "3 Short Tasks",
+                        "value": 3
+                    },
+                    {
+                        "name": "4 Short Tasks",
+                        "value": 4
+                    },
+                    {
+                        "name": "5 Short Tasks",
+                        "value": 5
+                    }
+                ]
+            },
+            {
+                "name": "confirm-ejects",
+                "description": "Will the game confirm ejected players if they are an imposter? Default: true",
+                "type": 5,
+                "required": false
+            },
+            {
+                "name": "emergency-meetings",
+                "description": "From 0-9, how many meetings can a person call? Default: 1",
+                "type": 4,
+                "required": false
+            },
+            {
+                "name": "anonymous-voting",
+                "description": "Will we know who voted who? Default: false",
+                "type": 5,
+                "required": false
+            },
+            {
+                "name": "emergency-cooldown",
+                "description": "How many seconds after a meeting before someone can call? Default: 15s",
+                "type": 4,
+                "required": false,
+                "choices": [
+                    {
+                        "name": "No Cooldown",
+                        "value": 0
+                    },
+                    {
+                        "name": "5 seconds",
+                        "value": 5
+                    },
+                    {
+                        "name": "10 seconds",
+                        "value": 10
+                    },
+                    {
+                        "name": "15 seconds",
+                        "value": 15
+                    },
+                    {
+                        "name": "20 seconds",
+                        "value": 20
+                    },
+                    {
+                        "name": "25 seconds",
+                        "value": 25
+                    },
+                    {
+                        "name": "30 seconds",
+                        "value": 30
+                    },
+                    {
+                        "name": "35 seconds",
+                        "value": 35
+                    },
+                    {
+                        "name": "40 seconds",
+                        "value": 40
+                    },
+                    {
+                        "name": "45 seconds",
+                        "value": 45
+                    },
+                    {
+                        "name": "50 seconds",
+                        "value": 50
+                    },
+                    {
+                        "name": "55 seconds",
+                        "value": 55
+                    },
+                    {
+                        "name": "60 seconds",
+                        "value": 60
+                    }
+                ]
+            },
+            {
+                "name": "discussion-time",
+                "description": "How much time do can you discuss? Default: 15s",
+                "type": 4,
+                "required": false,
+                "choices": [
+                    {
+                        "name": "No Discussion (???)",
+                        "value": 0
+                    },
+                    {
+                        "name": "15 seconds",
+                        "value": 15
+                    },
+                    {
+                        "name": "30 seconds",
+                        "value": 30
+                    },
+                    {
+                        "name": "45 seconds",
+                        "value": 45
+                    },
+                    {
+                        "name": "60 seconds",
+                        "value": 60
+                    },
+                    {
+                        "name": "75 seconds",
+                        "value": 75
+                    },
+                    {
+                        "name": "90 seconds",
+                        "value": 90
+                    },
+                    {
+                        "name": "105 seconds",
+                        "value": 105
+                    },
+                    {
+                        "name": "120 seconds",
+                        "value": 120
+                    }
+                ]
+            },
+            {
+                "name": "voting-time",
+                "description": "How much time do you have to vote? Default: 120s",
+                "type": 4,
+                "required": false,
+                "choices": [
+                    {
+                        "name": "No Vote Time (???)",
+                        "value": 0
+                    },
+                    {
+                        "name": "15 seconds",
+                        "value": 15
+                    },
+                    {
+                        "name": "30 seconds",
+                        "value": 30
+                    },
+                    {
+                        "name": "45 seconds",
+                        "value": 45
+                    },
+                    {
+                        "name": "60 seconds",
+                        "value": 60
+                    },
+                    {
+                        "name": "75 seconds",
+                        "value": 75
+                    },
+                    {
+                        "name": "90 seconds",
+                        "value": 90
+                    },
+                    {
+                        "name": "105 seconds",
+                        "value": 105
+                    },
+                    {
+                        "name": "120 seconds",
+                        "value": 120
+                    },
+                    {
+                        "name": "135 seconds",
+                        "value": 135
+                    },
+                    {
+                        "name": "150 seconds",
+                        "value": 150
+                    },
+                    {
+                        "name": "165 seconds",
+                        "value": 165
+                    },
+                    {
+                        "name": "180 seconds",
+                        "value": 180
+                    },
+                    {
+                        "name": "195 seconds",
+                        "value": 195
+                    },
+                    {
+                        "name": "210 seconds",
+                        "value": 210
+                    },
+                    {
+                        "name": "225 seconds",
+                        "value": 225
+                    },
+                    {
+                        "name": "240 seconds",
+                        "value": 240
+                    },
+                    {
+                        "name": "255 seconds",
+                        "value": 255
+                    },
+                    {
+                        "name": "270 seconds",
+                        "value": 270
+                    },
+                    {
+                        "name": "285 seconds",
+                        "value": 285
+                    },
+                    {
+                        "name": "300 seconds",
+                        "value": 300
+                    }
+                ]
+            },
+            {
+                "name": "player-speed",
+                "description": "How fast will **all** players move? Default: 1.0x",
+                "type": 4,
+                "required": false,
+                "choices": [
+                    {
+                        "name": "0.25x speed",
+                        "value": 25
+                    },
+                    {
+                        "name": "0.50x speed",
+                        "value": 50
+                    },
+                    {
+                        "name": "0.75x speed",
+                        "value": 75
+                    },
+                    {
+                        "name": "1.00x speed",
+                        "value": 100
+                    },
+                    {
+                        "name": "1.25x speed",
+                        "value": 125
+                    },
+                    {
+                        "name": "1.50x speed",
+                        "value": 150
+                    },
+                    {
+                        "name": "1.75x speed",
+                        "value": 175
+                    },
+                    {
+                        "name": "2.00x speed",
+                        "value": 200
+                    },
+                    {
+                        "name": "2.25x speed",
+                        "value": 225
+                    },
+                    {
+                        "name": "2.50x speed",
+                        "value": 250
+                    },
+                    {
+                        "name": "2.75x speed",
+                        "value": 275
+                    },
+                    {
+                        "name": "3.00x speed",
+                        "value": 300
+                    }
+                ]
+            },
+            {
+                "name": "crewmate-vision",
+                "description": "How far will **crewmates** see? Default: 1.0x",
+                "type": 4,
+                "required": false,
+                "choices": [
+                    {
+                        "name": "0.25x vision",
+                        "value": 25
+                    },
+                    {
+                        "name": "0.50x vision",
+                        "value": 50
+                    },
+                    {
+                        "name": "0.75x vision",
+                        "value": 75
+                    },
+                    {
+                        "name": "1.00x vision",
+                        "value": 100
+                    },
+                    {
+                        "name": "1.25x vision",
+                        "value": 125
+                    },
+                    {
+                        "name": "1.50x vision",
+                        "value": 150
+                    },
+                    {
+                        "name": "1.75x vision",
+                        "value": 175
+                    },
+                    {
+                        "name": "2.00x vision",
+                        "value": 200
+                    },
+                    {
+                        "name": "2.25x vision",
+                        "value": 225
+                    },
+                    {
+                        "name": "2.50x vision",
+                        "value": 250
+                    },
+                    {
+                        "name": "2.75x vision",
+                        "value": 275
+                    },
+                    {
+                        "name": "3.00x vision",
+                        "value": 300
+                    },
+                    {
+                        "name": "3.25x vision",
+                        "value": 325
+                    },
+                    {
+                        "name": "3.50x vision",
+                        "value": 350
+                    },
+                    {
+                        "name": "3.75x vision",
+                        "value": 375
+                    },
+                    {
+                        "name": "4.00x vision",
+                        "value": 400
+                    },
+                    {
+                        "name": "4.25x vision",
+                        "value": 425
+                    },
+                    {
+                        "name": "4.50x vision",
+                        "value": 450
+                    },
+                    {
+                        "name": "4.75x vision",
+                        "value": 475
+                    },
+                    {
+                        "name": "5.00x vision",
+                        "value": 500
+                    }
+                ]
+            },
+            {
+                "name": "imposter-vision",
+                "description": "How far will **imposters** see? Default: 1.5x",
+                "type": 4,
+                "required": false,
+                "choices": [
+                    {
+                        "name": "0.25x vision",
+                        "value": 25
+                    },
+                    {
+                        "name": "0.50x vision",
+                        "value": 50
+                    },
+                    {
+                        "name": "0.75x vision",
+                        "value": 75
+                    },
+                    {
+                        "name": "1.00x vision",
+                        "value": 100
+                    },
+                    {
+                        "name": "1.25x vision",
+                        "value": 125
+                    },
+                    {
+                        "name": "1.50x vision",
+                        "value": 150
+                    },
+                    {
+                        "name": "1.75x vision",
+                        "value": 175
+                    },
+                    {
+                        "name": "2.00x vision",
+                        "value": 200
+                    },
+                    {
+                        "name": "2.25x vision",
+                        "value": 225
+                    },
+                    {
+                        "name": "2.50x vision",
+                        "value": 250
+                    },
+                    {
+                        "name": "2.75x vision",
+                        "value": 275
+                    },
+                    {
+                        "name": "3.00x vision",
+                        "value": 300
+                    },
+                    {
+                        "name": "3.25x vision",
+                        "value": 325
+                    },
+                    {
+                        "name": "3.50x vision",
+                        "value": 350
+                    },
+                    {
+                        "name": "3.75x vision",
+                        "value": 375
+                    },
+                    {
+                        "name": "4.00x vision",
+                        "value": 400
+                    },
+                    {
+                        "name": "4.25x vision",
+                        "value": 425
+                    },
+                    {
+                        "name": "4.50x vision",
+                        "value": 450
+                    },
+                    {
+                        "name": "4.75x vision",
+                        "value": 475
+                    },
+                    {
+                        "name": "5.00x vision",
+                        "value": 500
+                    }
+                ]
+            },
+            {
+                "name": "kill-cooldown",
+                "description": "How long do imposters have to wait to kill again? Default: 45s",
+                "type": 4,
+                "required": false,
+                "choices": [
+                    {
+                        "name": "10.0 seconds",
+                        "value": 100
+                    },
+                    {
+                        "name": "12.5 seconds",
+                        "value": 125
+                    },
+                    {
+                        "name": "15.0 seconds",
+                        "value": 150
+                    },
+                    {
+                        "name": "17.5 seconds",
+                        "value": 175
+                    },
+                    {
+                        "name": "20.0 seconds",
+                        "value": 200
+                    },
+                    {
+                        "name": "22.5 seconds",
+                        "value": 225
+                    },
+                    {
+                        "name": "25.0 seconds",
+                        "value": 250
+                    },
+                    {
+                        "name": "27.5 seconds",
+                        "value": 275
+                    },
+                    {
+                        "name": "30.0 seconds",
+                        "value": 300
+                    },
+                    {
+                        "name": "32.5 seconds",
+                        "value": 325
+                    },
+                    {
+                        "name": "35.0 seconds",
+                        "value": 350
+                    },
+                    {
+                        "name": "37.5 seconds",
+                        "value": 375
+                    },
+                    {
+                        "name": "40.0 seconds",
+                        "value": 400
+                    },
+                    {
+                        "name": "42.5 seconds",
+                        "value": 425
+                    },
+                    {
+                        "name": "45.0 seconds",
+                        "value": 450
+                    },
+                    {
+                        "name": "47.5 seconds",
+                        "value": 475
+                    },
+                    {
+                        "name": "50.0 seconds",
+                        "value": 500
+                    },
+                    {
+                        "name": "52.5 seconds",
+                        "value": 525
+                    },
+                    {
+                        "name": "55.0 seconds",
+                        "value": 550
+                    },
+                    {
+                        "name": "57.5 seconds",
+                        "value": 575
+                    },
+                    {
+                        "name": "60.0 seconds",
+                        "value": 600
+                    }
+                ]
+            },
+            {
+                "name": "kill-distance",
+                "description": "How far can imposters kill? Default: Medium",
+                "type": 3,
+                "required": false,
+                "choices": [
+                    {
+                        "name": "Short",
+                        "value": "short"
+                    },
+                    {
+                        "name": "Medium",
+                        "value": "medium"
+                    },
+                    {
+                        "name": "Long",
+                        "value": "long"
+                    }
+                ]
+            },
+            {
+                "name": "task-bar-update",
+                "description": "Will the task bar update? If so, when? Default: Always",
+                "type": 3,
+                "required": false,
+                "choices": [
+                    {
+                        "name": "Always",
+                        "value": "always"
+                    },
+                    {
+                        "name": "Meetings",
+                        "value": "meetings"
+                    },
+                    {
+                        "name": "Never",
+                        "value": "never"
+                    }
+                ]
+            }
+        ]
     }
 ]

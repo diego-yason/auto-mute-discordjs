@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 const Discord = require(`discord.js`),
       client = new Discord.Client,
-      TOKEN = `ODIyNzM3MDg3MzI5NTk5NTA5.YFWnnw.62lntOIegAk9cbxVs_32ycxz2m4`,
+      { TOKEN } = require("./key.json"),
       axios = require(`axios`).default.create({
           baseURL: `https://discord.com/api/v8`,
           headers: {
@@ -40,6 +40,8 @@ const ref = {
     }
 };
 
+// REMINDME for speed and vision, you have to divide by 100 to get it correct
+// REMINDME for kill cooldown, divide by 10
 client.once(`ready`, () => {
     console.log(`Ready!`);
 });
