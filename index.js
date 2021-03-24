@@ -14,20 +14,28 @@ const Discord = require(`discord.js`),
       guild = `797075885827424266`,
       role = `814138012920709161`;
 
+class player {
+    // TODO player and game class objects
+    constructor(id, color) {
+        this.id = id;
+        this.color = color;
+    }
+}
+
 const ref = {
-    emojis: {
-        red: ":Red:",
-        blue: ":Blue:",
-        green: ":Green:",
-        pink: ":Pink:",
-        orange: ":Orange:",
-        yellow: ":Yellow:",
-        black: ":Black:",
-        white: ":White:",
-        purple: ":Purple:",
-        brown: ":Brown:",
-        cyan: ":Cyan:",
-        lime: ":Lime:"
+    colors: {
+        red: null,
+        blue: null,
+        green: null,
+        pink: null,
+        orange: null,
+        yellow: null,
+        black: null,
+        white: null,
+        purple: null,
+        brown: null,
+        cyan: null,
+        lime: null
     },
     images: {
         map: {
@@ -40,6 +48,19 @@ const ref = {
     },
     gameInfo: {}
 };
+
+function getUsername(id) {
+    return new Promise((resolve, reject) => {
+        axios.get(`/users/${id}`)
+             .then(res => {
+                 resolve(res.data.username);
+             })
+             .catch((res) => {
+                 console.error("Error");
+                 reject(res.status);
+             });
+    });
+}
 
 // TODO make embed
 
@@ -82,41 +103,36 @@ client.on(`raw`, async e => {
                 break;
             }
             case `add`: {
-                // eslint-disable-next-line no-inner-declarations
-                function getUsername(id) {
-                    return new Promise((resolve, reject) => {
-                        axios.get(`/users/${id}`)
-                             .then(res => {
-                                 resolve(res.data.username);
-                             })
-                             .catch((res) => {
-                                 console.error("Error");
-                                 reject(res.status);
-                             });
-                    });
+                if (ref.colors[options[1].value] === null) {
+                    const username = await getUsername(options[0].value);
+
+                    ref.colors[options[1].value] = username;
+                    dead.add({
+                        username: username,
+                        id: options[0].value,
+                        color: options[1].value // TODO check to make color unique per person
+                        }, options[0].value);
+                        
+                        axios.put(`/guilds/${guild}/members/${options[0].value}/roles/${role}`)
+                             .finally(() => { console.log("Placed the role"); });
+                        
+                        console.log(`Added ${dead.get(options[0].value).username} to dead`);
+                        reply(`Added ${dead.get(options[0].value).username} to the game!`);
+                } else {
+                    reply(`Error: User ${ref.colors[options[1].value]} is already color ${options[1].value}!`);
                 }
-                
-                dead.add({
-                username: await getUsername(options[0].value),
-                id: options[0].value,
-                color: options[1].value // TODO check to make color unique per person
-                }, options[0].value);
-                
-                axios.put(`/guilds/${guild}/members/${options[0].value}/roles/${role}`)
-                     .finally(() => { console.log("Placed the role"); });
-                
-                console.log(`Added ${dead.get(options[0].value).username} to dead`);
-                reply(`Added ${dead.get(options[0].value).username} to the game!`);
                 break;
             }
             case `remove`: {
                 const user = options[0].value;
                 if (dead.has(user)) {
                     reply(`Removed ${dead.get(user).username} from the game!`);
+                    ref.colors[dead.get(user).color] = null;
                     console.log(`Deleted ${dead.get(user).username} from dead and playerlist`);
                     dead.delete(user);
                 } else if (alive.has(user)) {                    
                     console.log(`Deleted ${dead.get(user).username} from alive and playerlist`);
+                    ref.colors[alive.get(user).color] = null;
                     reply(`Removed ${dead.get(user).username} from the game!`);
                     alive.delete(user);
                 } else {
@@ -228,10 +244,12 @@ client.on(`raw`, async e => {
             }
             case `clear`: {
                 alive.forEach((value, index, array) => {
+                    ref.colors[value.color] = null;
                     axios.delete(`/guilds/${guild}/members/${value.id}/roles/${role}`);
                     console.log(`Removed ${value.username} from player list`);
                 });
                 dead.forEach((value, index, array) => {
+                    ref.colors[value.color] = null;
                     axios.delete(`/guilds/${guild}/members/${value.id}/roles/${role}`);
                     console.log(`Removed ${value.username} from player list`);
                 });
