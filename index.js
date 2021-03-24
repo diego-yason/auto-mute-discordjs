@@ -22,6 +22,18 @@ class player {
     }
 }
 
+/*
+    Possible States
+        inactive / 0
+            DEFAULT STATE
+            anyone can talk
+        ingame / 1
+            only ghosts can talk | alive is deafened/muted
+        meeting / 2
+            alive can talk | ghosts are muted
+*/
+let status = 0; // for instant voice setting update
+
 const ref = {
     colors: {
         red: null,
@@ -165,6 +177,7 @@ client.on(`raw`, async e => {
                 break;
             }
             case `start-meeting`: {
+                status = 2;
                 dead.forEach((value, index, array) => {
                     axios.patch(`/guilds/${guild}/members/${value.id}`, {
                         mute: true,
@@ -183,6 +196,7 @@ client.on(`raw`, async e => {
                 break;
             }
             case `end-meeting`: {
+                status = 1;
                 alive.forEach((value, index, array) => {
                     axios.patch(`/guilds/${guild}/members/${value.id}`, {
                         mute: true,
