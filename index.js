@@ -43,8 +43,6 @@ const ref = {
 
 // TODO make embed
 
-// REMINDME for speed and vision, you have to divide by 100 to get it correct
-// REMINDME for kill cooldown, divide by 10
 client.once(`ready`, () => {
     console.log(`Ready!`);
 });
@@ -272,6 +270,16 @@ client.on(`raw`, async e => {
                     switch (options[i].name) {
                         default:
                             settings[options[i].name] = options[i].value;
+                            break;
+                        case "kill_cooldown":
+                        // reason: for kill cooldown, divide by 10
+                            settings[options[i].name] = options[i].value * 10;
+                            break;
+                        case "player_speed":
+                        case "crewmate_vision":
+                        case "imposter_vision":
+                            // reason: for speed and vision, you have to divide by 100 to get it correct
+                            settings[options[i].name] = options[i].value * 100;
                             break;
                     }
                 }
