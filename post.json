@@ -92,6 +92,22 @@
                 "description": "User who died",
                 "type": 6,
                 "required": true
+            },
+            {
+                "name": "cause",
+                "description": "How did they die?",
+                "type": 3,
+                "required": true,
+                "choices": [
+                    {
+                        "name": "voted-out",
+                        "value": "voted"
+                    },
+                    {
+                        "name": "killed-by-imposter",
+                        "value": "killed"
+                    }
+                ]
             }
         ]
     },
@@ -116,21 +132,33 @@
         "description": "A meeting ends!"
     },
     {
-        "name": "restart",
-        "description": "Starts a new game (functionally the same as start)"
-    },
-    {
         "name": "start",
-        "description": "Starts a new game (functionally the same as restart)"
+        "description": "Begins the game"
     },
     {
         "name": "end",
         "description": "End a game",
         "options": [
             {
+                "name": "winner",
+                "description": "Who won?",
+                "type": 3,
+                "required": true,
+                "choices": [
+                    {
+                        "name": "crewmate",
+                        "value": "crewmate"
+                    },
+                    {
+                        "name": "imposter",
+                        "value": "imposter"
+                    }
+                ]
+            },
+            {
                 "type": 5,
-                "name": "embed",
-                "description": "Post an embed in #among-us?",
+                "name": "confirm",
+                "description": "You sure you want to end the game?",
                 "required": true
             }
         ]
@@ -159,30 +187,6 @@
                 "name": "user",
                 "description": "User to be marked as imposter",
                 "type": 6,
-                "required": true
-            }
-        ]
-    },
-    {
-        "name": "admin-create-role",
-        "description": "ADMIN-RESTRICTED: Create a role",
-        "options": [
-            {
-                "name": "role-name",
-                "description": "Visible role name",
-                "type": 3,
-                "required": true
-            },
-            {
-                "name": "hoist",
-                "description": "Hoist role?",
-                "type": 5,
-                "required": true
-            },
-            {
-                "name": "hex-code",
-                "description": "Color of code in hex code",
-                "type": 3,
                 "required": true
             }
         ]
@@ -894,6 +898,22 @@
                         "value": "never"
                     }
                 ]
+            }
+        ]
+    },
+    {
+        "name": "new",
+        "description": "Start a new game record"
+    },
+    {
+        "name": "embed",
+        "description": "post an embed",
+        "options": [
+            {
+                "name": "data",
+                "description": "literally the name",
+                "type": 3,
+                "required": true
             }
         ]
     }
