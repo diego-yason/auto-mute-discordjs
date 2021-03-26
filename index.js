@@ -32,7 +32,8 @@ class player {
         meeting / 2
             alive can talk | ghosts are muted
 */
-let status = 0; // for instant voice setting update
+let status = 0, // for instant voice setting update
+    round = 0; // counting rounds
 
 const ref = {
     colors: {
@@ -108,11 +109,11 @@ client.on(`raw`, async e => {
         console.log("Got an interaction");
 
         switch (data.name) {
-            case `ping`: {
+            case "ping": {
                 reply(`yeah I got your ping`);
                 break;
             }
-            case `add`: {
+            case "add": {
                 if (ref.colors[options[1].value] === null) {
                     const username = await getUsername(options[0].value);
 
@@ -133,7 +134,7 @@ client.on(`raw`, async e => {
                 }
                 break;
             }
-            case `remove`: {
+            case "remove": {
                 const user = options[0].value;
                 if (dead.has(user)) {
                     reply(`Removed ${dead.get(user).username} from the game!`);
@@ -150,7 +151,7 @@ client.on(`raw`, async e => {
                 }
                 break;
             }
-            case `dead`: {
+            case "dead": {
                 const user = options[0].value;
                 if (alive.has(user)) {
                     dead.add(alive.get(user), user);
@@ -162,7 +163,7 @@ client.on(`raw`, async e => {
                 }
                 break;
             }
-            case `undead`: {
+            case "undead": {
                 const user = options[0].value;
                 if (dead.has(user)) {
                     alive.add(dead.get(user), user);
@@ -174,7 +175,7 @@ client.on(`raw`, async e => {
                 }
                 break;
             }
-            case `start-meeting`: {
+            case "start-meeting": {
                 status = 2;
                 dead.forEach((value, index, array) => {
                     axios.patch(`/guilds/${guild}/members/${value.id}`, {
@@ -193,7 +194,7 @@ client.on(`raw`, async e => {
                 reply(`Meeting started.`);
                 break;
             }
-            case `end-meeting`: {
+            case "end-meeting": {
                 status = 1;
                 alive.forEach((value, index, array) => {
                     axios.patch(`/guilds/${guild}/members/${value.id}`, {
@@ -212,8 +213,8 @@ client.on(`raw`, async e => {
                 reply(`Meeting ended.`);
                 break;
             }
-            case `restart`: 
-            case `start`: {
+            case "restart": 
+            case "start": {
                 // ok with dict
                 dead.forEach((value, index, array) => {
                     axios.patch(`/guilds/${guild}/members/${value.id}`, {
@@ -234,7 +235,7 @@ client.on(`raw`, async e => {
                 reply(`Started game.`);
                 break;
             }
-            case `end`: {
+            case "end": {
                 alive.forEach((value, index, array) => {
                     axios.patch(`/guilds/${guild}/members/${value.id}`, {
                         mute: false,
@@ -254,7 +255,7 @@ client.on(`raw`, async e => {
                 reply("Game ended, removing all server voice restrictions. Use `/clear` to remove all among us roles.");
                 break;
             }
-            case `clear`: {
+            case "clear": {
                 alive.forEach((value, index, array) => {
                     ref.colors[value.color] = null;
                     axios.delete(`/guilds/${guild}/members/${value.id}/roles/${role}`);
