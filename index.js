@@ -32,7 +32,8 @@ class player {
         meeting / 2
             alive can talk | ghosts are muted
 */
-let status = 0; // for instant voice setting update
+let status = 0, // for instant voice setting update
+    round = 0; // round counter
 
 const ref = {
     colors: {
@@ -196,6 +197,10 @@ client.on(`raw`, async e => {
                 break;
             }
             case `end-meeting`: {
+                if (status != 2) {
+                    reply("You aren't in a meeting!");
+                    return;
+                }
                 status = 1;
                 alive.forEach((value, index, array) => {
                     axios.patch(`/guilds/${guild}/members/${value.id}`, {
