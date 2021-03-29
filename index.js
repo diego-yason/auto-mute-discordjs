@@ -349,6 +349,7 @@ client.on(`raw`, async e => {
                 break;
             }
             case "embed": {
+                // this is just for reference
                 reply("Posted embed!");
                 
                 const info = new game({
