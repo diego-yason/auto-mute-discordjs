@@ -123,20 +123,22 @@ client.once(`ready`, () => {
 
 client.on(`raw`, async e => {
     if (e.t === `INTERACTION_CREATE`) {
-        console.log("Got an interaction");
+        await axios.post(`/interactions/${e.d.id}/${e.d.token}/callback`, {
+            type: 5
+        });
+
         const interaction = e.d,
               call_userid = interaction.member.user.id,
               data = e.d.data,
               options = data.options; // note: this is an array
 
+        console.log("Got an interaction");
+
         const reply = message => {
-            axios.post(`/interactions/${interaction.id}/${interaction.token}/callback`, {
-                type: 4,
-                data: {
-                    content: message,
-                }
+            axios.patch(`/webhooks/822737087329599509/${interaction.token}/messages/@original`, {
+                content: message
             })
-                 .finally("Send the message");
+                .finally("Send the message");
         };
 
         const exempt = ["new", "ping", "save-settings", "embed", "clear"];
@@ -199,7 +201,7 @@ client.on(`raw`, async e => {
                     ref.gameInfo.alive.delete(user);
                     console.log(`Deleted ${ref.gameInfo.dead.get(user).username} from alive and added to dead`);
                     reply(`${ref.gameInfo.dead.get(user).username} has been marked dead.`);
-                    
+                    // TODO insert property change
                     if (status === 2) {
                         // in a meeting
                         axios.patch(`/guilds/${guild}/members/${user}`, {
@@ -219,6 +221,7 @@ client.on(`raw`, async e => {
                 break;
             }
             case "undead": {
+                // TODO insert property change
                 const user = options[0].value;
                 if (ref.gameInfo.dead.has(user)) {
                     ref.gameInfo.alive.add(ref.gameInfo.dead.get(user), user);
