@@ -165,7 +165,7 @@
     },
     {
         "name": "clear",
-        "description": "Remove all users from the amongus role. This is limited to those who were added while the bot is active"
+        "description": "Remove all users from the amongus role. Limited to those who were added while the bot is active"
     },
     {
         "name": "crewmate",

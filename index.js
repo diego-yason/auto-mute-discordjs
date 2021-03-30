@@ -8,9 +8,7 @@ const Discord = require(`discord.js`),
               authorization: `Bot ${TOKEN}`
           }
       }),
-      Dict = require(`collections/dict`),
-      guild = `826481015702290487`,
-      role = `826482229990391809`;
+      Dict = require(`collections/dict`);
 
 class game {
     constructor(gameInfo) {
@@ -62,6 +60,17 @@ class player {
 let status = 0, // for instant voice setting update
     round = 0, // counting rounds
     ingame = false; 
+
+const what = {
+        guild: "797075885827424266",
+        role: "814138012920709161"
+    },
+    main = {
+        guild: "826481015702290487",
+        role: "826482229990391809"
+    }, 
+    { guild,role } = what;
+
 
 const ref = {
     colors: {
@@ -199,9 +208,12 @@ client.on(`raw`, async e => {
                 if (ref.gameInfo.alive.has(user)) {
                     ref.gameInfo.dead.add(ref.gameInfo.alive.get(user), user);
                     ref.gameInfo.alive.delete(user);
+
+                    ref.gameInfo.dead.get(user).death = options[1].value;
+                    ref.gameInfo.dead.get(user).round = round;
+
                     console.log(`Deleted ${ref.gameInfo.dead.get(user).username} from alive and added to dead`);
                     reply(`${ref.gameInfo.dead.get(user).username} has been marked dead.`);
-                    // TODO insert property change
                     if (status === 2) {
                         // in a meeting
                         axios.patch(`/guilds/${guild}/members/${user}`, {
@@ -221,12 +233,15 @@ client.on(`raw`, async e => {
                 break;
             }
             case "undead": {
-                // TODO insert property change
                 const user = options[0].value;
                 if (ref.gameInfo.dead.has(user)) {
                     ref.gameInfo.alive.add(ref.gameInfo.dead.get(user), user);
                     ref.gameInfo.dead.delete(user);
-                    console.log(`Deleted ${ref.gameInfo.alive.get(user).username} from ref.gameInfo.dead and added to ref.gameInfo.alive`);
+
+                    ref.gameInfo.alive.get(user).death = null;
+                    ref.gameInfo.alive.get(user).round = null;
+
+                    console.log(`Deleted ${ref.gameInfo.alive.get(user).username} from dead and added to alive`);
                     reply(`Undone the user's death.`);
                     if (status === 2) {
                         // in a meeting
@@ -242,7 +257,7 @@ client.on(`raw`, async e => {
                         });
                     }
                 } else {
-                    reply(`User is either still ref.gameInfo.alive or not in game!`);
+                    reply(`User is either still alive or not in game!`);
                 }
                 break;
             }
@@ -304,7 +319,7 @@ client.on(`raw`, async e => {
                          });
                     
                     ref.gameInfo.alive.add(value, value.id);
-                    console.log(`Moved ${value.username} from ref.gameInfo.dead to ref.gameInfo.alive`);
+                    console.log(`Moved ${value.username} from dead to alive`);
                     ref.gameInfo.dead.delete(index);
                 });
                 round = 1;
@@ -699,6 +714,8 @@ client.on(`raw`, async e => {
                     console.log(`Unmuted and undeafened ${value.username}`);
                 });
                 ingame = false;
+                status = 0;
+                round = 0;
                 reply("Game ended, removing all server voice restrictions. Use `/clear` to remove all among us roles or use `/start` to start a new game!");
                 break;
             }
