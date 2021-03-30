@@ -9,8 +9,8 @@ const Discord = require(`discord.js`),
           }
       }),
       Dict = require(`collections/dict`),
-      guild = `797075885827424266`,
-      role = `814138012920709161`;
+      guild = `826481015702290487`,
+      role = `826482229990391809`;
 
 class game {
     constructor(gameInfo) {
@@ -133,15 +133,15 @@ client.on(`raw`, async e => {
             axios.post(`/interactions/${interaction.id}/${interaction.token}/callback`, {
                 type: 4,
                 data: {
-                    // TODO: convert this into embed (see https://discord.com/developers/docs/resources/channel#embed-object)
-                    // maybe make another function?
                     content: message,
                 }
             })
                  .finally("Send the message");
         };
 
-        if (!(data.name === "new" || data.name === "ping" || data.name === "save-settings" || data.name === "embed")) {
+        const exempt = ["new", "ping", "save-settings", "embed", "clear"];
+
+        if (exempt.indexOf(data.name) === -1) {
             if (ref.gameInfo === null || ingame === false) {
                 reply("Error: No game started, please use `/new` to start a game. Use `/save-settings` to update the current game settings.");
                 return;
@@ -197,10 +197,24 @@ client.on(`raw`, async e => {
                 if (ref.gameInfo.alive.has(user)) {
                     ref.gameInfo.dead.add(ref.gameInfo.alive.get(user), user);
                     ref.gameInfo.alive.delete(user);
-                    console.log(`Deleted ${ref.gameInfo.dead.get(user).username} from ref.gameInfo.alive and added to ref.gameInfo.dead`);
-                    reply(`${ref.gameInfo.dead.get(user).username} has been marked ref.gameInfo.dead.`);
+                    console.log(`Deleted ${ref.gameInfo.dead.get(user).username} from alive and added to dead`);
+                    reply(`${ref.gameInfo.dead.get(user).username} has been marked dead.`);
+                    
+                    if (status === 2) {
+                        // in a meeting
+                        axios.patch(`/guilds/${guild}/members/${user}`, {
+                            deaf: false,
+                            mute: true
+                        });
+                    } else {
+                        // outside a meeting
+                        axios.patch(`/guilds/${guild}/members/${user}`, {
+                            deaf: false,
+                            mute: false
+                        });
+                    }
                 } else {
-                    reply(`User is either already ref.gameInfo.dead or not in game!`);
+                    reply(`User is either already dead or not in game!`);
                 }
                 break;
             }
@@ -211,6 +225,19 @@ client.on(`raw`, async e => {
                     ref.gameInfo.dead.delete(user);
                     console.log(`Deleted ${ref.gameInfo.alive.get(user).username} from ref.gameInfo.dead and added to ref.gameInfo.alive`);
                     reply(`Undone the user's death.`);
+                    if (status === 2) {
+                        // in a meeting
+                        axios.patch(`/guilds/${guild}/members/${user}`, {
+                            deaf: false,
+                            mute: false
+                        });
+                    } else {
+                        // outside a meeting
+                        axios.patch(`/guilds/${guild}/members/${user}`, {
+                            deaf: true,
+                            mute: true
+                        });
+                    }
                 } else {
                     reply(`User is either still ref.gameInfo.alive or not in game!`);
                 }
@@ -251,7 +278,8 @@ client.on(`raw`, async e => {
                     });
                     console.log(`Unmuted and undeafened ${value.username}`);
                 });
-                reply(`Meeting ended.`);
+                round++;
+                reply(`Meeting ended. Now at round ${round}`);
                 break;
             }
             case "start": {
@@ -272,6 +300,7 @@ client.on(`raw`, async e => {
                     console.log(`Moved ${value.username} from ref.gameInfo.dead to ref.gameInfo.alive`);
                     ref.gameInfo.dead.delete(index);
                 });
+                round = 1;
                 reply(`Started game.`);
                 break;
             }
@@ -543,7 +572,6 @@ client.on(`raw`, async e => {
                     imposterString = "";
 
                 const info = ref.gameInfo;
-                // axios.post(`/channels/814710147775594506/messages`, { embed: {} });
 
                 const players = [];
                 info.dead.forEach((value, index, array) => {
@@ -635,7 +663,7 @@ client.on(`raw`, async e => {
                     ...fieldArray
                 ];
 
-                axios.post(`/channels/814199629184106507/messages`, { embed: {
+                axios.post(`/channels/814710147775594506/messages`, { embed: {
                         title: "Among Us Game Stats",
                         timestamp: new Date().toISOString(),
                         thumbnail: {
