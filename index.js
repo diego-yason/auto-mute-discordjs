@@ -262,7 +262,11 @@ client.on(`raw`, async e => {
                 reply(`Meeting started.`);
                 break;
             }
-            case "end-meeting": {
+            case `end-meeting`: {
+                if (status != 2) {
+                    reply("You aren't in a meeting!");
+                    return;
+                }
                 status = 1;
                 ref.gameInfo.alive.forEach((value, index, array) => {
                     axios.patch(`/guilds/${guild}/members/${value.id}`, {
@@ -374,6 +378,7 @@ client.on(`raw`, async e => {
                 break;
             }
             case "embed": {
+                // this is just for reference
                 reply("Posted embed!");
                 
                 const info = new game({
