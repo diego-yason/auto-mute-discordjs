@@ -702,18 +702,21 @@ client.on(`raw`, async e => {
                 reply("Game ended, removing all server voice restrictions. Use `/clear` to remove all among us roles or use `/start` to start a new game!");
                 break;
             }
-            case "imposter": {
-                const game = ref.gameInfo;
+            case "imposter": 
+            case "crewmate": {
+                const game = ref.gameInfo,
+                      role = data.name,
+                      grammar = (role === "imposter") ? "an" : "a";
 
                 if (game.alive.has(options[0].value)) {
-                    game.alive.get(options[0].value).role = "imposter";
+                    game.alive.get(options[0].value).role = role;
                 } else if (game.dead.has(options[0].value)) {
-                    game.dead.get(options[0].value).role = "imposter";
+                    game.dead.get(options[0].value).role = role;
                 } else {
                     reply("User isn't in the game!");
                     return;
                 }
-                reply("User is marked as an imposter");
+                reply(`User is marked as ${grammar} ${role}`);
                 break;
             }
         }
