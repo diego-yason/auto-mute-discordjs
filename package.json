@@ -18,6 +18,7 @@
   "homepage": "https://github.com/KingMarine-GH/auto-mute-discordjs#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "axios-retry": "^3.1.9",
     "collections": "^5.1.12",
     "discord.js": "^12.5.1",
     "eslint": "^7.22.0"

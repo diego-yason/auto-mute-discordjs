@@ -66,10 +66,10 @@ const what = {
         role: "814138012920709161"
     },
     main = {
-        guild: "826481015702290487",
+        guild: "826481015702290483",
         role: "826482229990391809"
     }, 
-    { guild,role } = what;
+    { guild,role } = main; // REMINDME this should switch when we're going to play
 
 
 const ref = {
@@ -165,6 +165,10 @@ client.on(`raw`, async e => {
                 break;
             }
             case "new": {
+                if (ref.gameInfo === null) {
+                    reply("Error: Game settings (without defaults) are still empty! Use `/save-settings`");
+                    return;
+                }
                 ingame = true;
                 reply("Game record created! You can now add people");
                 break;
@@ -624,7 +628,7 @@ client.on(`raw`, async e => {
                         death = "They didn't die.";
                     } else if (value.death === "imposter") {
                         death = "They were killed by an imposter at round " + value.round;
-                    } else if (value.death === "v   ote") {
+                    } else if (value.death === "vote") {
                         death = "The crew voted them off at round " + value.round;
                     } else {
                         death = "Hmm, something is off with this record. Contact KingMarine";
@@ -686,15 +690,15 @@ client.on(`raw`, async e => {
                     ...fieldArray
                 ];
 
-                axios.post(`/channels/814710147775594506/messages`, { embed: {
+                /*axios.post(`/channels/814710147775594506/messages`, { embed: {
                         title: "Among Us Game Stats",
                         timestamp: new Date().toISOString(),
                         thumbnail: {
-                            url: ref.images.map.airship,
+                            url: ref.images.map[info.map],
                         },
                         fields: embedarray
                     }
-                });
+                });*/
 
                 // clearing lists
                 ref.gameInfo.alive.forEach((value, index, array) => {
